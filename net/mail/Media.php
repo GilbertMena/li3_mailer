@@ -248,7 +248,7 @@ class Media extends \lithium\core\StaticObject {
 			}
 			if ($path[0] !== '/') {
 				$base = Libraries::get($options['library'], 'path');
-				$path = $base . '/mails/_assets/' . $path;
+				$path = $base . '/views/_assets/' . $path;
 			}
 			if ($options['check'] && !is_file($path)) {
 				return false;
@@ -284,12 +284,12 @@ class Media extends \lithium\core\StaticObject {
 	 */
 	protected static function _handlers($type = null) {
 		$template = array(
-			'{:library}/mails/{:mailer}/{:template}.{:type}.php' => 'mailer',
-			'{:library}/mails/{:template}.{:type}.php'
+			'{:library}/views/{:mailer}/{:template}.{:type}.php' => 'mailer',
+			'{:library}/views/{:template}.{:type}.php'
 		);
 		$defaultPaths = compact('template') + array(
-			'layout'   => '{:library}/mails/layouts/{:layout}.{:type}.php',
-			'element'  => '{:library}/mails/elements/{:template}.{:type}.php'
+			'layout'   => '{:library}/views/layouts/{:layout}.{:type}.php',
+			'element'  => '{:library}/views/elements/{:template}.{:type}.php'
 		);
 
 		$handlers = static::$_handlers + array(
